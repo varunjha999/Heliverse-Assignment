@@ -1,3 +1,23 @@
+#install node.js
+#git clone https://github.com/varunjha999/Heliverse-Assignment.git
+#install npm install / yarn install
+#install dependency 
+#npm start / yarn start 
+
+#Functionalities:
+
+1.Search by Name
+2.Add 3 filters Domain, Gender and Availability ( make sure all these filters work at the same time )
+3.Create a team by selecting users from unique domain ( only available ) 
+( This concept is similar to the cart in ecommerce websites )
+4.Show the team details once done
+Make it responsive
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Home from "./pages/Home";
+import Team from "./pages/Team";
+import TeamContext from "./context/TeamContext";
+import Navbar from "./components/Navbar";
+import "./App.css";
 
 function App() {
+  const [newUser, setNewUser] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem("team", JSON.stringify(newUser));
+  }, [newUser]);
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem("team");
+    if (savedUser) {
+      setNewUser(JSON.parse(savedUser));
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TeamContext.Provider value={{ newUser, setNewUser }}>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/team" element={<Team />} />
+        </Routes>
+      </BrowserRouter>
+    </TeamContext.Provider>
   );
 }
 
